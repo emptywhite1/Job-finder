@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, Grid, Typography, Button, makeStyles } from "@material-ui/core"
-import {differenceInMinutes} from "date-fns"
+import {differenceInCalendarDays} from "date-fns"
 
 const skills = ["Javascript", "React.js", "Node.js"]
 
@@ -80,7 +80,7 @@ function JobCard(props) {
 				<Grid item container direction="column" alignItems="flex-end" xs>
 					<Grid item>
 						<Typography variant="caption">
-							{differenceInMinutes(Date.now(), props.postedOn)} min ago  
+							{differenceInCalendarDays(Date.now(), props.postedOn)} day ago
 						</Typography>
 					</Grid>
 

@@ -1,10 +1,11 @@
 import React from "react";
 import { Link } from 'react-router-dom';
+import NewJobModal from "../Layout/Job/NewJobModal";
 
 function PostJob() {
   return (
     <div>
-      <h1>Post your job</h1>
+      <NewJobModal/>
       <Link style = {{color: "black"}} to = "/">
         <h2>back to home</h2>
       </Link>

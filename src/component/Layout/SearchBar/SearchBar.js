@@ -20,10 +20,10 @@ export default props => {
 	const classes = useStyles()
 	return (
 		<Box p={2} mt={-5} mb={2} className={classes.wrapper}>
-			<Grid container  >
+			<Grid container>
 
 				<Grid item xs = {6}>
-					<Select variant="filled" defaultValue={"Full time"} disableUnderline style={{minWidth: '602px'}}>
+					<Select variant="filled" defaultValue={"Full time"} fullWidth disableUnderline style={{marginLeft: "-5px"}}>
 						<MenuItem value="Full time">Full time</MenuItem>
 						<MenuItem value="Part time">Part time</MenuItem>
 						<MenuItem value="Contract">Contract</MenuItem>
@@ -31,14 +31,14 @@ export default props => {
 				</Grid>
 
 				<Grid item xs = {4}>
-					<Select variant="filled" defaultValue={"Remote"} disableUnderline style={{minWidth: '400px'}}>
+					<Select variant="filled" defaultValue={"Remote"} fullWidth disableUnderline >
 						<MenuItem value="Remote">Remote</MenuItem>
 						<MenuItem value="In-office">In-office</MenuItem>
 					</Select>
 				</Grid>
 
 				<Grid item xs ={2}>
-					<Button variant="contained" color="primary" disableElevation style ={{minHeight: '49px' , minWidth: '205px'}}>
+					<Button variant="contained" color="primary" fullWidth disableElevation style ={{minHeight: '49px' , marginLeft: "5px"}}>
 						Search
 					</Button>
 				</Grid>
