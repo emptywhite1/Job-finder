@@ -1,0 +1,49 @@
+import React from "react";
+import { Box, Button, Select, MenuItem, makeStyles, Grid } from '@material-ui/core'
+import props from '../Header/Header';
+
+const useStyles = makeStyles({
+	wrapper: {
+		backgroundColor: "white",
+		display: "flex",
+		boxShadow: "0px 1px 5px rgba(0, 0, 0, 0.1)",
+		borderRadius: "5px",
+		"& > *": {
+			flex: 1,
+			height: "45px",
+			margin: "8px",
+		},
+	},
+})
+
+export default props => {
+	const classes = useStyles()
+	return (
+		<Box p={2} mt={-5} mb={2} className={classes.wrapper}>
+			<Grid container  >
+
+				<Grid item xs = {6}>
+					<Select variant="filled" defaultValue={"Full time"} disableUnderline style={{minWidth: '602px'}}>
+						<MenuItem value="Full time">Full time</MenuItem>
+						<MenuItem value="Part time">Part time</MenuItem>
+						<MenuItem value="Contract">Contract</MenuItem>
+					</Select>
+				</Grid>
+
+				<Grid item xs = {4}>
+					<Select variant="filled" defaultValue={"Remote"} disableUnderline style={{minWidth: '400px'}}>
+						<MenuItem value="Remote">Remote</MenuItem>
+						<MenuItem value="In-office">In-office</MenuItem>
+					</Select>
+				</Grid>
+
+				<Grid item xs ={2}>
+					<Button variant="contained" color="primary" disableElevation style ={{minHeight: '49px' , minWidth: '205px'}}>
+						Search
+					</Button>
+				</Grid>
+
+			</Grid>
+		</Box>
+	)
+}
