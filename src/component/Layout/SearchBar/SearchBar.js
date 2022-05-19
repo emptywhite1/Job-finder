@@ -1,6 +1,7 @@
 import React from "react";
-import { Box, Button, Select, MenuItem, makeStyles, Grid } from '@material-ui/core'
+import { Box, Button, Select, MenuItem, makeStyles, Grid, FilledInput} from '@material-ui/core'
 import props from '../Header/Header';
+import SearchInput from "./SearchInput";
 
 const useStyles = makeStyles({
 	wrapper: {
@@ -23,11 +24,14 @@ export default props => {
 			<Grid container>
 
 				<Grid item xs = {6}>
-					<Select variant="filled" defaultValue={"Full time"} fullWidth disableUnderline style={{marginLeft: "-5px"}}>
+					<SearchInput placeholder={"Search for job title"} style = {{marginLeft: "-5px"}}/>
+
+					
+					{/* <Select variant="filled" defaultValue={"Full time"} fullWidth disableUnderline style={{marginLeft: "-5px"}}>
 						<MenuItem value="Full time">Full time</MenuItem>
 						<MenuItem value="Part time">Part time</MenuItem>
 						<MenuItem value="Contract">Contract</MenuItem>
-					</Select>
+					</Select> */}
 				</Grid>
 
 				<Grid item xs = {4}>

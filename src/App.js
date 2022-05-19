@@ -14,10 +14,10 @@ function App() {
   return (<ThemeProvider theme={theme}>
     <Router>
       <Switch>
+        <Route path={"/login"} component={Login} />
         <Route path={"/"} exact component={Home} />
-        <Route path={"/login"}  component={Login} />
-        <Route path={"/myjob"}  component={MyJob} />
-        <Route path={"/postjob"}  component={PostJob} />
+        <Route path={"/myjobs"} component={MyJob} />
+        <Route path={"/postjob"} component={PostJob} />
       </Switch>
     </Router>
 
