@@ -5,11 +5,13 @@ import SearchBar from "../Layout/SearchBar/SearchBar";
 import Header from "../Layout/Header/Header";
 import jobData from "../../dummyData";
 import { firestore } from "../../firebase/config";
+import ViewJobModal from "../Layout/Job/ViewJobModal";
 
 
 function Home() {
   const [jobs, setJobs] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [viewJob, setViewJob] = useState({});
 
   const fetchJobs = async () => {
     const req = await firestore.collection("jobs")
@@ -26,18 +28,17 @@ function Home() {
   return (
     <div>
       <Header />
+      <ViewJobModal job = {viewJob} closeModal = {() => setViewJob({})} />
       <Grid container justify="center">
         <Grid item xs={10}>
           <SearchBar jobs />
-
           {
             loading? <Box display={"flex"} justifyContent={"center"}><CircularProgress/></Box> 
             :
-            jobs.map(job => <JobCard key={job.id} {...job} />)
+            jobs.map(job => <JobCard open = {() => setViewJob(job)} key={job.id} {...job} />)
           }
 
           
-
 
         </Grid>
 

@@ -12,7 +12,8 @@ import PostJob from './component/Pages/PostJob';
 import SignUp from './component/Pages/SignUp'
 
 function App() {
-  return (<ThemeProvider theme={theme}>
+  return (
+  <ThemeProvider theme={theme}>
     <Router>
       <Switch>
         <Route path={"/login"} component={Login} />
@@ -22,7 +23,6 @@ function App() {
         <Route path={"/postjob"} component={PostJob} />
       </Switch>
     </Router>
-
   </ThemeProvider>
   );
 };
