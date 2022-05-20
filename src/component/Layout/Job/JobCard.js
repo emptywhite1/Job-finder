@@ -1,6 +1,7 @@
 import React from "react";
-import { Box, Grid, Typography, Button, makeStyles } from "@material-ui/core"
+import { Box, Grid, Typography, Button, makeStyles} from "@material-ui/core"
 import {differenceInCalendarDays} from "date-fns"
+import { Link } from "react-router-dom";
 
 const skills = ["Javascript", "React.js", "Node.js"]
 
@@ -59,7 +60,9 @@ const useStyles = makeStyles((theme) => ({
 	},
 }))
 
+
 function JobCard(props) {
+	
 	const classes = useStyles()
 	return (
 		<Box p={2} className={classes.wrapper} mt={1}>
@@ -83,13 +86,11 @@ function JobCard(props) {
 							{differenceInCalendarDays(Date.now(), props.postedOn)} day ago
 						</Typography>
 					</Grid>
-
 					<Grid item>
 						<Box mt={2}>
-							<Button variant="outlined">Check</Button>
+								<Button variant="outlined" onClick={props.open}>Check</Button>
 						</Box>
 					</Grid>
-
 				</Grid>
 			</Grid>
 		</Box>
