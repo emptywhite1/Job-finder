@@ -28,7 +28,7 @@ function Home() {
       <Header />
       <Grid container justify="center">
         <Grid item xs={10}>
-          <SearchBar />
+          <SearchBar jobs />
 
           {
             loading? <Box display={"flex"} justifyContent={"center"}><CircularProgress/></Box> 
