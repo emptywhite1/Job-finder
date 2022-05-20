@@ -9,12 +9,14 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Login from "./component/Pages/Login";
 import MyJob from './component/Pages/MyJob';
 import PostJob from './component/Pages/PostJob';
+import SignUp from './component/Pages/SignUp'
 
 function App() {
   return (<ThemeProvider theme={theme}>
     <Router>
       <Switch>
         <Route path={"/login"} component={Login} />
+        <Route path={"/signup"} component={SignUp}/>
         <Route path={"/"} exact component={Home} />
         <Route path={"/myjobs"} component={MyJob} />
         <Route path={"/postjob"} component={PostJob} />

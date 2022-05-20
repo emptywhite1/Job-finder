@@ -6,10 +6,9 @@ export default props => (
 	<div>
 		<Box bgcolor="secondary.main" color="white">
 			<Grid container justify="flex-end" spacing={5} >
-
 				<Grid item xs={2}>
 					<Link to = "/login" style = {{color: "white", textDecoration: "none"}}>
-						<Typography style={{ marginTop: "10px" }}>Logout</Typography>
+						<Typography style={{ marginTop: "10px" }}>Login</Typography>
 					</Link>
 				</Grid>
 			</Grid>

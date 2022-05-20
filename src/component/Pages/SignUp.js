@@ -1,14 +1,12 @@
 import React from "react";
 import { Link } from 'react-router-dom';
 import { Grid, Button } from "@material-ui/core"
-import LoginPage from "../Layout/LoginPage/LoginPage";
+import SignUpPage from "../Layout/LoginPage/SignUpPage";
 
-function Login() {
+function SignUp() {
   return (
-    
-      <LoginPage/>
-    
+      <SignUpPage/> 
   );
 };
 
-export default Login;
+export default SignUp;
