@@ -56,7 +56,7 @@ function NewJobModal() {
                 <MenuItem value="In-office">In-office</MenuItem>
               </Select>
 
-              <Select variant="filled" defaultValue={""} fullWidth disableUnderline style={{ marginTop: "15px" }} >
+              <Select variant="filled" defaultValue={"12th Pass"} fullWidth disableUnderline style={{ marginTop: "15px" }} >
                 <MenuItem value="12th Pass">12th Pass</MenuItem>
                 <MenuItem value="No Degree">In-office</MenuItem>
               </Select>

@@ -1,5 +1,6 @@
 import React from "react";
-import { Box, OutlinedInput, Button, Container, Typography, Grid, makeStyles } from "@material-ui/core"
+import { Box, OutlinedInput, Button, Container, Typography, Grid, makeStyles, Input,InputAdornment, IconButton  } from "@material-ui/core"
+import {VisibilityOff, Visibility } from "@material-ui/icons"
 import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
@@ -16,6 +17,24 @@ const useStyles = makeStyles((theme) => ({
 
 function SignUpPage() {
     const classes = useStyles()
+
+    const [values, setValues] = React.useState({
+        password: "",
+        showPassword: false,
+      });
+      
+      const handleClickShowPassword = () => {
+        setValues({ ...values, showPassword: !values.showPassword });
+      };
+      
+      const handleMouseDownPassword = (event) => {
+        event.preventDefault();
+      };
+      
+      const handlePasswordChange = (prop) => (event) => {
+        setValues({ ...values, [prop]: event.target.value });
+      };
+
     return (
         <Container className={classes.container} maxWidth="xl">
         <Box paddingTop={6} marginTop={3} >
@@ -36,9 +55,31 @@ function SignUpPage() {
                     <Typography variant='h6' style={{ marginTop: "5px" }}> Email </Typography>
                     <OutlinedInput color="black" fullWidth></OutlinedInput>
                     <Typography variant='h6' style={{ marginTop: "10px" }}> Password </Typography>
-                    <OutlinedInput color="black" fullWidth></OutlinedInput>
+                    <OutlinedInput fullWidth
+                            type={values.showPassword ? "text" : "password"}
+                            onChange={handlePasswordChange("password")}
+                            value={values.password}
+                            endAdornment={
+                            <InputAdornment position="end">
+                                <IconButton onClick={handleClickShowPassword} onMouseDown={handleMouseDownPassword}>
+                                {values.showPassword ? <Visibility /> : <VisibilityOff />}
+                                </IconButton>
+                            </InputAdornment>
+                            }
+                        />
                     <Typography variant='h6' style={{ marginTop: "10px" }}> Confirm Password </Typography>
-                    <OutlinedInput color="black" fullWidth></OutlinedInput>
+                    <OutlinedInput fullWidth
+                            type={values.showPassword ? "text" : "password"}
+                            onChange={handlePasswordChange("password")}
+                            value={values.password}
+                            endAdornment={
+                            <InputAdornment position="end">
+                                <IconButton onClick={handleClickShowPassword} onMouseDown={handleMouseDownPassword}>
+                                {values.showPassword ? <Visibility /> : <VisibilityOff />}
+                                </IconButton>
+                            </InputAdornment>
+                            }
+                        />
 
                     <Link style={{ color: "black", textDecoration: "none" }} to="/login">
                         <Grid container justify="center"  >
