@@ -9,8 +9,13 @@ const useStyles = makeStyles((theme) => ({
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
+    },
 
+    loginButton: {
+        marginTop: "20px",
+        borderRadius: "20px"
     }
+
 }))
 function LoginPage() {
     const classes = useStyles()
@@ -29,20 +34,25 @@ function LoginPage() {
 
                 <Container maxWidth="xl" fullWidth style={{ marginTop: "25px" }}>
                     <Box px={5} py={3} bgcolor="white" color="black" style={{ width: "450px", borderRadius: "10px" }}>
+
                         <Grid container justify="center" style={{ marginBottom: "50px" }}>
                             <Typography variant='h5' style={{ fontWeight: "600" }}> Sign In </Typography>
                         </Grid>
+
                         <Typography variant='h6' style={{ marginTop: "5px" }}> Email </Typography>
                         <OutlinedInput color="black" fullWidth></OutlinedInput>
+
                         <Typography variant='h6' style={{ marginTop: "10px" }}> Password </Typography>
                         <OutlinedInput color="black" fullWidth></OutlinedInput>
 
                         <Link style={{ color: "black", textDecoration: "none" }} to="/">
                             <Grid container justify="center"  >
-                                <Button variant="contained" color="primary" fullWidth style={{ marginTop: "20px",borderRadius: "20px" }} disableElevation>Login</Button>
+                                <Button variant="contained" color="primary" fullWidth
+                                    className={classes.loginButton} disableElevation>
+                                    Login
+                                </Button>
                             </Grid>
                         </Link>
-
 
 
                         <Container maxWidth="sm">
