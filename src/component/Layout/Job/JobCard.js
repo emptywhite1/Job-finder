@@ -83,7 +83,7 @@ function JobCard(props) {
 				<Grid item container direction="column" alignItems="flex-end" xs>
 					<Grid item>
 						<Typography variant="caption">
-							{differenceInCalendarDays(Date.now(), props.postedOn)} day ago
+							{differenceInCalendarDays(Date.now(), props.createdAt)} day ago
 						</Typography>
 					</Grid>
 					<Grid item>
