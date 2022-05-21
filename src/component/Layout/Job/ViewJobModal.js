@@ -18,7 +18,7 @@ export default (props) => {
             <DialogTitle>
                 <Box display="flex" justifyContent = "space-between" alignItems = "center">
                     {props.job.title} @ {props.job.companyName} 
-                    <IconButton>
+                    <IconButton onClick={props.closeModal}>
                         <CloseIcon />
                     </IconButton>
                 </Box>
@@ -68,7 +68,7 @@ export default (props) => {
                 </Box>
             </Box>
             <DialogActions>
-                <Button variant = "outlined" component = "a" href={props.job.companyUrl} target = "_Blank"> Apply </Button>
+                <Button variant = "outlined" component = "a" href={props.job.companyUrl} target = "_blank"> Apply </Button>
             </DialogActions>
         </Dialog>
     );

@@ -7,9 +7,6 @@ function PostJob() {
   return (
     <div>
       <NewJobModal/>
-      <Link style = {{color: "black"}} to = "/">
-        <h2>back to home</h2>
-      </Link>
     </div>
   );
 };
