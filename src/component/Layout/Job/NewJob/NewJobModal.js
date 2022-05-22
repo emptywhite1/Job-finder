@@ -74,10 +74,10 @@ function NewJobModal() {
     jobDescription: Yup.string().required("Required")
   })
 
-  const onSubmit = (data) => {
+  const onSubmit = (data, actions) => {
     axios.post("http://localhost:3001/jobs", data).then((response) => {
-      console.log("IT WORKED");
-    });
+    }).then(alert("Job posted successfully"));
+    
   };
 
   return (
