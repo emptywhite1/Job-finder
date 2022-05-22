@@ -14,6 +14,8 @@ app.use("/jobs", jobRouter);
 const accountRouter = require("./routes/Account");
 app.use("/account", accountRouter);
 
+// const login = require("./routes/Account/login")
+// app.use("/account/login", login)
 
 db.sequelize.sync().then(() => {
   app.listen(3001, () => {
