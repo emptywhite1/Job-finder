@@ -11,6 +11,10 @@ const db = require("./models");
 const jobRouter = require("./routes/Jobs");
 app.use("/jobs", jobRouter);
 
+const accountRouter = require("./routes/Account");
+app.use("/account", accountRouter);
+
+
 db.sequelize.sync().then(() => {
   app.listen(3001, () => {
     console.log("Server running on port 3001");
