@@ -1,7 +1,6 @@
 import React from "react";
 import { Box, Button, Select, MenuItem, makeStyles, Grid, FilledInput } from '@material-ui/core'
 
-import props from '../Header/Header';
 import SearchInput from "./SearchInput";
 
 const useStyles = makeStyles({

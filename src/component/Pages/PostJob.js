@@ -1,11 +1,13 @@
 import React from "react";
 import { Link } from 'react-router-dom';
-import Header from "../Layout/Header/Header";
-import NewJobModal from "../Layout/Job/NewJobModal";
+
+import SubHeader from "../Layout/Header/SubHeader";
+import NewJobModal from "../Layout/Job/NewJob/NewJobModal";
 
 function PostJob() {
   return (
     <div>
+      <SubHeader/>
       <NewJobModal/>
     </div>
   );

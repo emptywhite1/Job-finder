@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Box, CircularProgress, Grid, ThemeProvider } from "@material-ui/core";
 import JobCard from "../Layout/Job/JobCard";
 import SearchBar from "../Layout/SearchBar/SearchBar";
-import Header from "../Layout/Header/Header";
+import Header from "../Layout/Header/HomeHeader";
 import jobData from "../../dummyData";
 import { firestore } from "../../firebase/config";
 import ViewJobModal from "../Layout/Job/ViewJobModal";
@@ -37,12 +37,12 @@ function Home() {
 
   useEffect(() => {
     
-    fetchJobs()
-    //fetchJobsMySql()
+    //fetchJobs()
+    fetchJobsMySql()
   }, [])
   return (
     <div>
-      <Header />
+      <Header></Header>
       <ViewJobModal job={viewJob} closeModal={() => setViewJob({})} />
       <Grid container justify="center">
         <Grid item xs={10}>

@@ -34,7 +34,7 @@ export default [
     location: "Ha noi",
     companyName: "Facebook",
     salary: "20000000",
-    degree: "Bachelor's degree",
+    degree: "Bachelor",
     companyUrl: "https://facebook.com",
     link: "https://facebook.com/careers",
   },
