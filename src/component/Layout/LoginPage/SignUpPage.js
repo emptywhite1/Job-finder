@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Box, OutlinedInput, Button, Container, Typography, Grid, makeStyles, Input,InputAdornment, IconButton  } from "@material-ui/core"
 import {VisibilityOff, Visibility } from "@material-ui/icons"
 import { Link } from 'react-router-dom';
@@ -41,22 +41,9 @@ const onSubmit = (data) => {
 function SignUpPage() {
     const classes = useStyles()
 
-    const [values, setValues] = React.useState({
-        password: "",
-        showPassword: false,
-      });
-      
-      const handleClickShowPassword = () => {
-        setValues({ ...values, showPassword: !values.showPassword });
-      };
-      
-      const handleMouseDownPassword = (event) => {
-        event.preventDefault();
-      };
-      
-      const handlePasswordChange = (prop) => (event) => {
-        setValues({ ...values, [prop]: event.target.value });
-      };
+    const [showPassword, setShowPassword] = useState(false);
+    const handleClickShowPassword = () => setShowPassword(!showPassword);
+    const handleMouseDownPassword = () => setShowPassword(!showPassword);
 
     return (
         <Container className={classes.container} maxWidth="xl">
@@ -83,7 +70,20 @@ function SignUpPage() {
                         <FormTextField name = "email" color="black" fullWidth></FormTextField>
                         <Typography variant='h6' style={{ marginTop: "10px" }}> Password </Typography>
                         <FormTextField name = "password" fullWidth
-                                type={values.showPassword ? "text" : "password"}    
+                            type={showPassword ? "text" : "password"} // <-- This is where the magic happens
+           
+                            InputProps={{ 
+                                endAdornment: (
+                                <InputAdornment position="end">
+                                    <IconButton
+                                    onClick={handleClickShowPassword}
+                                    onMouseDown={handleMouseDownPassword}
+                                    >
+                                    {showPassword ? <Visibility /> : <VisibilityOff />}
+                                    </IconButton>
+                                </InputAdornment>
+                                )
+                            }}
                         />
 
                         <Grid container justify="center"  >
