@@ -5,6 +5,7 @@ const { Jobs } = require("../models");
 router.get("/", async (req, res) => {
   const listOfJobs = await Jobs.findAll();
   res.json(listOfJobs);
+;
 });
 
 router.post("/", async (req, res) => {

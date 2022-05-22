@@ -123,8 +123,7 @@ function NewJobModal() {
                   classname={classes.descriptionBox}
                   placeholder="Job Description"
                   style={{ marginTop: "15px" }} />
-
-                <FormButton>Submit</FormButton>
+                <FormButton>Submit </FormButton>
               </Form>
             </Formik>
           </Box>

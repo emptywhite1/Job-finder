@@ -1,7 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { Box, OutlinedInput, Button, Container, Typography, Grid, makeStyles, Input,InputAdornment, IconButton  } from "@material-ui/core"
 import {VisibilityOff, Visibility } from "@material-ui/icons"
 import { Link } from 'react-router-dom';
+import { Formik, Form } from "formik"
+import * as Yup from "yup"
+import axios from 'axios';
+import FormButton from '../Job/NewJob/FormButton';
+import FormTextField from '../Job/NewJob/FormTextField';
 
 const useStyles = makeStyles((theme) => ({
     container: {
@@ -14,26 +19,31 @@ const useStyles = makeStyles((theme) => ({
     }
 }))
 
+const INITIAL_FORM_STATE = {
+    email: "",
+    password: "",
+
+};
+
+const FORM_VALIDATION = Yup.object().shape({
+    email: Yup.string().required("Required"),
+    password: Yup.string().required("Required"),
+
+})
+
+const onSubmit = (data) => {
+    axios.post("http://localhost:3001/account", data).then((response) => {
+      console.log("IT WORKED");
+    });
+};
+
 
 function SignUpPage() {
     const classes = useStyles()
 
-    const [values, setValues] = React.useState({
-        password: "",
-        showPassword: false,
-      });
-      
-      const handleClickShowPassword = () => {
-        setValues({ ...values, showPassword: !values.showPassword });
-      };
-      
-      const handleMouseDownPassword = (event) => {
-        event.preventDefault();
-      };
-      
-      const handlePasswordChange = (prop) => (event) => {
-        setValues({ ...values, [prop]: event.target.value });
-      };
+    const [showPassword, setShowPassword] = useState(false);
+    const handleClickShowPassword = () => setShowPassword(!showPassword);
+    const handleMouseDownPassword = () => setShowPassword(!showPassword);
 
     return (
         <Container className={classes.container} maxWidth="xl">
@@ -52,41 +62,36 @@ function SignUpPage() {
                     <Grid container justify="center" style={{ marginBottom: "50px" }}>
                         <Typography variant='h5' style={{ fontWeight: "600" }}> Sign Up </Typography>
                     </Grid>
-                    <Typography variant='h6' style={{ marginTop: "5px" }}> Email </Typography>
-                    <OutlinedInput color="black" fullWidth></OutlinedInput>
-                    <Typography variant='h6' style={{ marginTop: "10px" }}> Password </Typography>
-                    <OutlinedInput fullWidth
-                            type={values.showPassword ? "text" : "password"}
-                            onChange={handlePasswordChange("password")}
-                            value={values.password}
-                            endAdornment={
-                            <InputAdornment position="end">
-                                <IconButton onClick={handleClickShowPassword} onMouseDown={handleMouseDownPassword}>
-                                {values.showPassword ? <Visibility /> : <VisibilityOff />}
-                                </IconButton>
-                            </InputAdornment>
-                            }
-                        />
-                    <Typography variant='h6' style={{ marginTop: "10px" }}> Confirm Password </Typography>
-                    <OutlinedInput fullWidth
-                            type={values.showPassword ? "text" : "password"}
-                            onChange={handlePasswordChange("password")}
-                            value={values.password}
-                            endAdornment={
-                            <InputAdornment position="end">
-                                <IconButton onClick={handleClickShowPassword} onMouseDown={handleMouseDownPassword}>
-                                {values.showPassword ? <Visibility /> : <VisibilityOff />}
-                                </IconButton>
-                            </InputAdornment>
-                            }
+                    <Formik initialValues={INITIAL_FORM_STATE}
+                    validationSchema={FORM_VALIDATION}
+                    onSubmit= {onSubmit}>
+                    <Form>
+                        <Typography variant='h6' style={{ marginTop: "5px" }}> Email </Typography>
+                        <FormTextField name = "email" color="black" fullWidth></FormTextField>
+                        <Typography variant='h6' style={{ marginTop: "10px" }}> Password </Typography>
+                        <FormTextField name = "password" fullWidth
+                            type={showPassword ? "text" : "password"} // <-- This is where the magic happens
+           
+                            InputProps={{ 
+                                endAdornment: (
+                                <InputAdornment position="end">
+                                    <IconButton
+                                    onClick={handleClickShowPassword}
+                                    onMouseDown={handleMouseDownPassword}
+                                    >
+                                    {showPassword ? <Visibility /> : <VisibilityOff />}
+                                    </IconButton>
+                                </InputAdornment>
+                                )
+                            }}
                         />
 
-                    <Link style={{ color: "black", textDecoration: "none" }} to="/login">
                         <Grid container justify="center"  >
-                            <Button variant="contained" color="primary" fullWidth style={{ marginTop: "20px",borderRadius: "20px" }} disableElevation>Submit</Button>
+                            <FormButton>Submit</FormButton>
                         </Grid>
-                    </Link>
-
+                        
+                    </Form>
+                    </Formik>
                     <Container maxWidth="sm">
                             <Box bgcolor="white" color="black" style={{ marginTop: "50px" }}>
                                 <Grid container justify="center" >
