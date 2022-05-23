@@ -3,24 +3,29 @@ import { Box, Grid, Typography, Button } from "@material-ui/core";
 import { Link } from 'react-router-dom';
 
 function HomeHeader(props) {
+
+	const logout = () => {
+		sessionStorage.removeItem("accessToken")
+	}
+
 	return (
 		<div>
-			<Box bgcolor="secondary.main" color="white">
+			{ <Box bgcolor="secondary.main" color="white">
 				<Grid container justify="flex-end" spacing={5} >
 					<Grid item xs={2}>
 						<Link to="/login" style={{ color: "white", textDecoration: "none" }}>
-							<Typography style={{ marginTop: "10px" }}>Login</Typography>
+							<Button variant = "contained" onClick={(logout)} style={{ marginTop: "10px" }}>Logout</Button>
 						</Link>
 					</Grid>
 				</Grid>
-			</Box>
+			</Box> }
 			<Box pt={5} pb={10} bgcolor="secondary.main" color="white">
-				{/* <Grid container>
-				<Grid item xs={12}>
+				 <Grid container>
+				{/* <Grid item xs={12}>
 					<Typography>Logout</Typography>
-				</Grid>
+				</Grid> */}
 
-			</Grid> */}
+			</Grid> 
 				<Grid container justify="center" >
 
 					<Grid item xs={8}>
