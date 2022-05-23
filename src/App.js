@@ -19,8 +19,8 @@ function App() {
     <Router>
       <Switch>
         <Route path={"/login"} component={Login} />
-        <PrivateRoute path={"/signup"} component={SignUp}/>
-        <PrivateRoute path={"/"} exact component={Home} />
+        <Route path={"/signup"} component={SignUp}/>
+        <Route path={"/"} exact component={Home} />
         <PrivateRoute path={"/myjobs"} component={MyJob} />
         <PrivateRoute path={"/postjob"} component={PostJob} />
       </Switch>

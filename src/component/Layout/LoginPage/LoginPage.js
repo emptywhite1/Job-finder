@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
 
 function LoginPage() {
     
-    const isLogged = useSelector(state => state.isLogged)
+    
     const dispatch = useDispatch()
 
     let history = useHistory();
