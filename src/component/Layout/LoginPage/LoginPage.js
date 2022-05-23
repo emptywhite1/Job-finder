@@ -1,7 +1,8 @@
-import React from "react";
-import { Box, OutlinedInput, Button, Container, Typography, Grid, makeStyles, Input,InputAdornment, IconButton  } from "@material-ui/core"
+import React, { useState } from "react";
+import { Box, OutlinedInput, Button, Container, Typography, Grid, makeStyles, Input,InputAdornment, IconButton, TextField  } from "@material-ui/core"
 import {VisibilityOff, Visibility } from "@material-ui/icons"
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 const useStyles = makeStyles((theme) => ({
     container: {
@@ -18,24 +19,21 @@ const useStyles = makeStyles((theme) => ({
     }
 
 }))
+
 function LoginPage() {
     const classes = useStyles()
-    const [values, setValues] = React.useState({
-        password: "",
-        showPassword: false,
-      });
-      
-      const handleClickShowPassword = () => {
-        setValues({ ...values, showPassword: !values.showPassword });
-      };
-      
-      const handleMouseDownPassword = (event) => {
-        event.preventDefault();
-      };
-      
-      const handlePasswordChange = (prop) => (event) => {
-        setValues({ ...values, [prop]: event.target.value });
-      };
+    const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("")
+    const login = () => {
+        const data = {email : email, password : password}
+        axios.post("http://localhost:3001/account/login", data).then((response) => {
+            console.log(response.data);
+        });
+    };
+
+    const [showPassword, setShowPassword] = useState(false);
+    const handleClickShowPassword = () => setShowPassword(!showPassword);
+    const handleMouseDownPassword = () => setShowPassword(!showPassword);
     return (
 
         <Container className={classes.container} maxWidth="xl">
@@ -55,35 +53,36 @@ function LoginPage() {
                         <Grid container justify="center" style={{ marginBottom: "50px" }}>
                             <Typography variant='h5' style={{ fontWeight: "600" }}> Sign In </Typography>
                         </Grid>
-                       
+                    {/* {email}    */}
                         <Typography variant='h6' style={{ marginTop: "5px" }}> Email </Typography>
-                        <OutlinedInput color="black" fullWidth></OutlinedInput>
-
-                        <Typography visible = {"false"} variant='h6' style={{ marginTop: "10px" }}> Password </Typography>
-                        <OutlinedInput fullWidth
-                            type={values.showPassword ? "text" : "password"}
-                            onChange={handlePasswordChange("password")}
-                            value={values.password}
-                            endAdornment={
+                        <TextField variant = "outlined" type = "text" onChange = {(event) => {setEmail(event.target.value)}} color="black" fullWidth>
+                        </TextField>
+                    {/* {password}    */}
+                        <Typography variant='h6' style={{ marginTop: "10px" }}> Password </Typography>
+                        <TextField variant = "outlined"  onChange = {(event) => {setPassword(event.target.value)}} fullWidth
+                        type={showPassword ? "text" : "password"} // <-- This is where the magic happens
+                        InputProps={{ 
+                            endAdornment: (
                             <InputAdornment position="end">
                                 <IconButton
                                 onClick={handleClickShowPassword}
                                 onMouseDown={handleMouseDownPassword}
                                 >
-                                {values.showPassword ? <Visibility /> : <VisibilityOff />}
+                                {showPassword ? <Visibility /> : <VisibilityOff />}
                                 </IconButton>
                             </InputAdornment>
-                            }
+                            )
+                        }}
+
                         />
 
-                        <Link style={{ color: "black", textDecoration: "none" }} to="/">
                             <Grid container justify="center"  >
-                                <Button variant="contained" color="primary" fullWidth
+                                <Button onClick={(login)} variant="contained" color="primary" fullWidth
                                     className={classes.loginButton} disableElevation>
                                     Login
                                 </Button>
                             </Grid>
-                        </Link>
+
     
 
                         <Container maxWidth="sm">
@@ -102,4 +101,5 @@ function LoginPage() {
 
     );
 };
+
 export default LoginPage;

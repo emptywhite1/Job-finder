@@ -26,8 +26,8 @@ const INITIAL_FORM_STATE = {
 };
 
 const FORM_VALIDATION = Yup.object().shape({
-    email: Yup.string().required("Required"),
-    password: Yup.string().required("Required"),
+    email: Yup.string().min(6).max(320).required("Required"),
+    password: Yup.string().min(6).max(20).required("Required"),
 
 })
 
@@ -70,8 +70,7 @@ function SignUpPage() {
                         <FormTextField name = "email" color="black" fullWidth></FormTextField>
                         <Typography variant='h6' style={{ marginTop: "10px" }}> Password </Typography>
                         <FormTextField name = "password" fullWidth
-                            type={showPassword ? "text" : "password"} // <-- This is where the magic happens
-           
+                            type={showPassword ? "text" : "password"} 
                             InputProps={{ 
                                 endAdornment: (
                                 <InputAdornment position="end">
