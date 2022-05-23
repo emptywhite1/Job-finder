@@ -4,6 +4,7 @@ const { Jobs } = require("../models");
 const Sequelize = require("sequelize");
 const Op = Sequelize.Op;
 
+
 router.get("/", async (req, res) => {
   const listOfJobs = await Jobs.findAll();
   res.json(listOfJobs);

@@ -7,6 +7,7 @@ import * as Yup from "yup"
 import axios from 'axios';
 import FormButton from '../Job/NewJob/FormButton';
 import FormTextField from '../Job/NewJob/FormTextField';
+import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
     container: {
@@ -31,20 +32,19 @@ const FORM_VALIDATION = Yup.object().shape({
 
 })
 
-const onSubmit = (data) => {
-    axios.post("http://localhost:3001/account", data).then((response) => {
-      console.log("IT WORKED");
-    });
-};
+
 
 
 function SignUpPage() {
     const classes = useStyles()
-
+    let history = useHistory()
     const [showPassword, setShowPassword] = useState(false);
     const handleClickShowPassword = () => setShowPassword(!showPassword);
     const handleMouseDownPassword = () => setShowPassword(!showPassword);
-
+    const onSubmit = (data) => {
+        axios.post("http://localhost:3001/account", data).then((response) => {
+        }).then(alert("Account Created!  \nReturn to Login Page")).then(history.push("/login"));
+    };
     return (
         <Container className={classes.container} maxWidth="xl">
         <Box paddingTop={6} marginTop={3} >

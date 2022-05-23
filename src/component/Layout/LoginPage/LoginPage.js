@@ -3,6 +3,7 @@ import { Box, OutlinedInput, Button, Container, Typography, Grid, makeStyles, In
 import {VisibilityOff, Visibility } from "@material-ui/icons"
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import {useHistory} from "react-router-dom"
 
 const useStyles = makeStyles((theme) => ({
     container: {
@@ -21,13 +22,19 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 function LoginPage() {
+    let history = useHistory();
     const classes = useStyles()
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const login = () => {
         const data = {email : email, password : password}
         axios.post("http://localhost:3001/account/login", data).then((response) => {
-            console.log(response.data);
+            if(response.data.error) {
+                alert(response.data.error);
+            } else {
+                history.push("/")
+            }
+            
         });
     };
 
