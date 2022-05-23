@@ -32,6 +32,7 @@ function LoginPage() {
             if(response.data.error) {
                 alert(response.data.error);
             } else {
+                sessionStorage.getItem("accessToken", response.data)
                 history.push("/")
             }
             
