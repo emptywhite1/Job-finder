@@ -7,7 +7,7 @@ import * as Yup from "yup"
 import FormSelect from "./FormSelect";
 import FormButton from './FormButton';
 import axios from 'axios';
-
+import {useHistory} from "react-router-dom"
 const useStyles = makeStyles((theme) => ({
   container: {
     backgroundColor: "#f2f2f2",
@@ -73,9 +73,10 @@ function NewJobModal() {
     companyUrl: Yup.string().required("Required"),
     jobDescription: Yup.string().required("Required")
   })
-
+  let history = useHistory();
   const onSubmit = (data, actions) => {
-    axios.post("http://localhost:3001/jobs", data).then((response) => {
+    axios.post("http://localhost:3001/jobs", data, {
+    }).then((response) => {
     }).then(alert("Job posted successfully"));
     
   };

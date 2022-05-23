@@ -2,6 +2,9 @@ const express = require("express");
 const router = express.Router();
 const { Account } = require("../models");
 const bcrypt = require("bcrypt")
+
+const{sign} = require("jsonwebtoken");
+const { default: userEvent } = require("@testing-library/user-event");
 // router.get("/", async (req, res) => {
 //     const listOfAccount = await Account.findAll();
 //     res.json(listOfAccount);
@@ -21,23 +24,16 @@ router.post("/", async(req, res) => {
 router.post("/login", async (req, res) => {
     const {email, password} = req.body;
     const account = await Account.findOne({where: {email : email}});
-    if(!account) {
-        return res.status(400).json({
-            status_code: 0,
-            error_msg: "Account Does Not Exist!",
-          });
-    }
+    if(!account) return res.json({error: "User Doesn't Exist!" });
 
     bcrypt.compare(password, account.password).then((match) => {
-        if(!match) return res.status(400).json({
-            status_code: 0,
-            error_msg: "Wrong Password!",
-          });
+        if(!match) return res.json({error: "Wrong Password!" });
 
-        res.json("Login Success!");
+        const accessToken = sign({password : account.password, email : account.email},
+        "secret"        
+        )
+        res.json(accessToken);
     })
-    
-    
 });
 
 
