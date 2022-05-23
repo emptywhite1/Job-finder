@@ -29,10 +29,8 @@ router.post("/login", async (req, res) => {
     bcrypt.compare(password, account.password).then((match) => {
         if(!match) return res.json({error: "Wrong Password!" });
 
-        const accessToken = sign({password : account.password, email : account.email},
-        "secret"        
-        )
-        res.json(accessToken);
+        const accessToken = sign({email : account.email, password : account.password}, "seasdcret");
+        res.json(accessToken)
     })
 });
 

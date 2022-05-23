@@ -7,12 +7,12 @@ function SubHeader(props) {
     <div>
 
       <Box py={1} bgcolor="secondary.main" color="white">
-        {/* <Grid container>
+        <Grid container>
 				<Grid item xs={12}>
 					<Typography>Logout</Typography>
 				</Grid>
 
-			</Grid> */}
+			</Grid>
         <Grid container justify="center" >
 
           <Grid item xs={8}>
@@ -35,8 +35,8 @@ function SubHeader(props) {
 
           <Grid item xs={1}>
             <Link to="/login" style={{ textDecoration: 'none' }}>
-              <Typography style={{ marginTop: "6px", color: "white", marginLeft: "40px" }} >Login</Typography>
-            </Link>
+              <Typography style={{ marginTop: "6px", color: "white", marginLeft: "40px" }} >Logout</Typography>
+            </Link> 
           </Grid>
 
         </Grid>

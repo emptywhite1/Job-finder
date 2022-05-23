@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import {useHistory} from "react-router-dom"
 
+
 const useStyles = makeStyles((theme) => ({
     container: {
         backgroundColor: "#f2f2f2",
@@ -32,6 +33,7 @@ function LoginPage() {
             if(response.data.error) {
                 alert(response.data.error);
             } else {
+                window.sessionStorage.getItem("accessToken", response.data);
                 history.push("/")
             }
             
