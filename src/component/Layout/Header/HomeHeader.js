@@ -10,19 +10,11 @@ function HomeHeader(props) {
 
 	return (
 		<div>
-<<<<<<< HEAD
-			<Box bgcolor="secondary.main" color="white">
-				<Grid container justify="flex-end"  >
-					<Grid item xs={2}>
-						<Link to="/login" style={{ color: "white", textDecoration: "none" }}>
-							<Typography style={{ marginTop: "10px", marginLeft: "55px" }}>Login</Typography>
-=======
 			{ <Box bgcolor="secondary.main" color="white">
 				<Grid container justify="flex-end" spacing={5} >
 					<Grid item xs={2}>
 						<Link to="/login" style={{ color: "white", textDecoration: "none" }}>
 							<Button variant = "contained" onClick={(logout)} style={{ marginTop: "10px" }}>Logout</Button>
->>>>>>> 788f9c1867eff7eed7401b589bae2a3ce8d2770c
 						</Link>
 					</Grid>
 				</Grid>

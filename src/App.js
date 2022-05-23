@@ -7,11 +7,11 @@ import Login from "./component/Pages/Login";
 import MyJob from './component/Pages/MyJob';
 import PostJob from './component/Pages/PostJob';
 import SignUp from './component/Pages/SignUp'
-import { useSelector } from "react-redux";
+import PrivateRoute from './component/Route/PrivateRoute';
+
 
 function App() {
-  const isAuth = useSelector(state => state.isLogged)
-  {console.log(isAuth.getState())}
+
   return (
   
   <ThemeProvider theme={theme}>
@@ -19,10 +19,10 @@ function App() {
     <Router>
       <Switch>
         <Route path={"/login"} component={Login} />
-        <Route path={"/signup"} component={SignUp}/>
-        <Route path={"/"} exact component={Home} />
-        <Route path={"/myjobs"} component={MyJob} />
-        <Route path={"/postjob"} component={PostJob} />
+        <PrivateRoute path={"/signup"} component={SignUp}/>
+        <PrivateRoute path={"/"} exact component={Home} />
+        <PrivateRoute path={"/myjobs"} component={MyJob} />
+        <PrivateRoute path={"/postjob"} component={PostJob} />
       </Switch>
     </Router>
   </ThemeProvider>

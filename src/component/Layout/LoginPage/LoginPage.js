@@ -4,6 +4,10 @@ import {VisibilityOff, Visibility } from "@material-ui/icons"
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import {useHistory} from "react-router-dom"
+import {setLogin} from "../../../Redux/actions"
+import { useDispatch, useSelector } from 'react-redux';
+import Login from './../../Pages/Login';
+
 
 
 const useStyles = makeStyles((theme) => ({
@@ -23,6 +27,10 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 function LoginPage() {
+    
+    const isLogged = useSelector(state => state.isLogged)
+    const dispatch = useDispatch()
+
     let history = useHistory();
     const classes = useStyles()
     const [email, setEmail] = useState("")
@@ -34,7 +42,9 @@ function LoginPage() {
                 alert(response.data.error);
             } else {
                 window.sessionStorage.getItem("accessToken", response.data);
+                dispatch(setLogin())
                 history.push("/")
+                
             }
             
         });
