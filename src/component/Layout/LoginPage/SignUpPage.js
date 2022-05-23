@@ -50,7 +50,7 @@ function SignUpPage() {
         <Box paddingTop={6} marginTop={3} >
             <Grid container justify="center">
                 <Grid item xl>
-                    <Link style={{ color: "black", textDecoration: "none" }} to="/">
+                    <Link style={{ color: "black", textDecoration: "none" }} to="/login">
                         <Typography variant="h3">Job Finder</Typography>
                     </Link>
 
