@@ -43,8 +43,16 @@ function SignUpPage() {
     const handleMouseDownPassword = () => setShowPassword(!showPassword);
     const onSubmit = (data) => {
         axios.post("http://localhost:3001/account", data).then((response) => {
-        }).then(alert("Account Created!  \nReturn to Login Page")).then(history.push("/login"));
-    };
+            if(response.data.error) {
+                alert(response.data.error);
+            } else {
+                alert("Account Created! \nRedirectiong to Login Page!")
+                history.push("/login")
+            }
+            
+        });
+
+    }
     return (
         <Container className={classes.container} maxWidth="xl">
         <Box paddingTop={6} marginTop={3} >

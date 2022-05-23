@@ -41,7 +41,7 @@ function LoginPage() {
             if(response.data.error) {
                 alert(response.data.error);
             } else {
-                window.sessionStorage.getItem("accessToken", response.data);
+                localStorage.getItem("accessToken", response.data);
                 dispatch(setLogin())
                 history.push("/")
                 

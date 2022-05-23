@@ -13,12 +13,16 @@ const { default: userEvent } = require("@testing-library/user-event");
 
 router.post("/", async(req, res) => {
     const {email, password} = req.body;
-    bcrypt.hash(password, 10).then((hash) => {
-        Account.create({
-            email : email,
-            password: hash,
-        });
-    })
+    const checkSignUp = await Account.findOne({where: {email : email}});
+    if(checkSignUp){ return res.json({error: "User Has Already Exist!" });}
+    else{
+        bcrypt.hash(password, 10).then((hash) => {
+            Account.create({
+                email : email,
+                password: hash,
+            });
+        })
+    }
 })
 
 router.post("/login", async (req, res) => {
