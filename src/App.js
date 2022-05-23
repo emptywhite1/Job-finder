@@ -7,10 +7,15 @@ import Login from "./component/Pages/Login";
 import MyJob from './component/Pages/MyJob';
 import PostJob from './component/Pages/PostJob';
 import SignUp from './component/Pages/SignUp'
+import { useSelector } from "react-redux";
 
 function App() {
+  const isAuth = useSelector(state => state.isLogged)
+  {console.log(isAuth.getState())}
   return (
+  
   <ThemeProvider theme={theme}>
+    
     <Router>
       <Switch>
         <Route path={"/login"} component={Login} />

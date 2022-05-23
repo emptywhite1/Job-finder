@@ -14,39 +14,39 @@ function Home() {
 
   const fetchJobsMySql = async () => {
     axios.get("http://localhost:3001/jobs")
-    .then((response) => {
-      const tempJobs = response.data.map((job) => ({...job, createdAt: new Date(job.createdAt)}))
-      setJobs(tempJobs)
-      
-    })
-    
+      .then((response) => {
+        const tempJobs = response.data.map((job) => ({ ...job, createdAt: new Date(job.createdAt) }))
+        setJobs(tempJobs)
+
+      })
+
     setLoading(false)
   }
 
   const handleSearch = (value) => {
     axios.post("http://localhost:3001/jobs/search", value)
-    .then((response) => {
-      const tempJobs = response.data.map((job) => ({...job, createdAt: new Date(job.createdAt)}))
-      setJobs(tempJobs)
-      
-    })
+      .then((response) => {
+        const tempJobs = response.data.map((job) => ({ ...job, createdAt: new Date(job.createdAt) }))
+        setJobs(tempJobs)
+
+      })
     console.log(value)
   }
-  
+
 
   useEffect(() => {
-    
+
     fetchJobsMySql()
   }, [])
   return (
-    <div>
+    <Box>
       <Header></Header>
       <ViewJobModal job={viewJob} closeModal={() => setViewJob({})} />
       <Grid container justify="center">
         <Grid item xs={10}>
-          <SearchBar onChange = {(value) => handleSearch(value)} />
+          <SearchBar onChange={(value) => handleSearch(value)} />
           {
-            
+
             loading ? <Box display={"flex"} justifyContent={"center"}><CircularProgress /></Box>
               :
               jobs.map(job => <JobCard open={() => setViewJob(job)} key={job.id} {...job} />)
@@ -57,7 +57,7 @@ function Home() {
         </Grid>
 
       </Grid>
-    </div>
+    </Box>
   );
 };
 
