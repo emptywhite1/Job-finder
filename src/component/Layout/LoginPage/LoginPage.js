@@ -33,7 +33,7 @@ function LoginPage() {
             if(response.data.error) {
                 alert(response.data.error);
             } else {
-                window.sessionStorage.getItem("accessToken", response.data);
+                localStorage.getItem("accessToken", response.data);
                 history.push("/")
             }
             
