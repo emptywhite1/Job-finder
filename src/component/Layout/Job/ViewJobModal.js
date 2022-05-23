@@ -1,7 +1,7 @@
+import { Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, IconButton, makeStyles, Typography } from "@material-ui/core"
+import { Close as CloseIcon } from "@material-ui/icons"
+import { format } from "date-fns"
 import React from 'react'
-import { Box, Grid, FilledInput, Select, MenuItem, Dialog, DialogTitle, DialogContent, DialogActions, makeStyles, Typography, Button, IconButton, CircularProgress } from "@material-ui/core"
-import {Close as CloseIcon} from "@material-ui/icons"
-import {format} from "date-fns"
 
 const useStyles = makeStyles({
     info:{
@@ -28,7 +28,7 @@ export default (props) => {
                 <Box className = {classes.info} paddingLeft = {3} display="flex">
                     <Typography variant='h7' marginLeft = "50px">Posted On:</Typography>
                     <Typography variant='h7'> 
-                    {props.job.postedOn && format(props.job.postedOn, "dd/MM/yyyy HH:MM")} 
+                    {props.job.createdAt && format(props.job.createdAt, "dd/MM/yyyy HH:MM")} 
                     </Typography>
                 </Box>
 

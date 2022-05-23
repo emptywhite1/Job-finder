@@ -14,7 +14,7 @@ function HomeHeader(props) {
 					</Grid>
 				</Grid>
 			</Box>
-			<Box py={10} bgcolor="secondary.main" color="white">
+			<Box pt={5} pb={10} bgcolor="secondary.main" color="white">
 				{/* <Grid container>
 				<Grid item xs={12}>
 					<Typography>Logout</Typography>
