@@ -22,6 +22,7 @@ router.post("/", async(req, res) => {
                 password: hash,
             });
         })
+        res.json("Account Created")
     }
 })
 
