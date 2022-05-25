@@ -25,6 +25,7 @@ function SearchBar(props) {
 	const [locationValue, setLocationValue] = useState("")
 	const [jobs, setJobs] = useState([])
 	const [location, setLocation] = useState([])
+	const [title, setTitle] = useState([])
 
 	const fetchData = async () => {
 		axios.get("http://localhost:3001/jobs")
@@ -34,8 +35,11 @@ function SearchBar(props) {
 				const tempLocation = [
 					...new Map(tempJobs.map((item) => [item.location, item])).values(),
 				];
-
+				const tempTitle = [
+					...new Map(tempJobs.map((item) => [item.title, item])).values(),
+				];
 				setLocation(tempLocation)
+				setTitle(tempTitle)
 			})
 
 
@@ -63,7 +67,7 @@ function SearchBar(props) {
 								}
 								else setTitleValue("")
 							}}
-							options={jobs}
+							options={title}
 							getOptionLabel={(option) => option.title}
 							popupIcon={""}
 							fullWidth
