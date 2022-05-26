@@ -46,7 +46,7 @@ function SignUpPage() {
             if(response.data.error) {
                 alert(response.data.error);
             } else {
-                alert("Account Created! \nRedirectiong to Login Page!")
+                alert("Account Created! \nRedirecting to Login Page!")
                 history.push("/login")
             }
             
