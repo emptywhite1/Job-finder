@@ -47,9 +47,7 @@ export default (props) => {
                     <Typography variant='h7'> {props.job.workType}, {props.job.workStyle}  </Typography>
                 </Box>
 
-                <Box className = {classes.info} paddingLeft = {3} display="flex">
-                    <Typography variant='h7' marginLeft = "50px">Job Description:</Typography>
-                    <Typography variant='h7'> {props.job.jobDescription}  </Typography>
+                
                 </Box>
 
                 <Box className = {classes.info} paddingLeft = {3} display="flex">
@@ -66,6 +64,10 @@ export default (props) => {
                     <Typography variant='h7' marginLeft = "50px">Job Salary:</Typography>
                     <Typography variant='h7'> {props.job.salary}VND </Typography>
                 </Box>
+
+                <Box className = {classes.info} paddingLeft = {3} display="flex">
+                    <Typography variant='h7' marginLeft = "50px">Job Description:</Typography>
+                    <Typography variant='h7'> {props.job.jobDescription}  </Typography>
             </Box>
             <DialogActions>
                 <Button variant = "outlined" component = "a" href={props.job.companyUrl} target = "_blank"> Apply </Button>

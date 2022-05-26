@@ -6,7 +6,7 @@ const Op = Sequelize.Op;
 
 
 router.get("/", async (req, res) => {
-  const listOfJobs = await Jobs.findAll();
+  const listOfJobs = await Jobs.findAll({order: [['updatedAt', 'DESC']]});
   res.json(listOfJobs);
 });
 
@@ -24,7 +24,8 @@ router.post("/search", async (req, res) => {
     where: {
       title: { [Op.like]: `%${jobTitle}%` },
       location: { [Op.like]: `%${jobLocation}%` }
-    }
+    },
+    order: [['updatedAt', 'DESC']]
   })
   res.json(filteredJobs);
 });
